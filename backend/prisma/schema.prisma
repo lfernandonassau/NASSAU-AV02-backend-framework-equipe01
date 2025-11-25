@@ -7,6 +7,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+//
+// ─────────────────────────── MODELOS DO SISTEMA ───────────────────────────
+//
+
+// Usuário do sistema (login)
 model Usuario {
   id_usuario Int      @id @default(autoincrement())
   nome       String   @db.VarChar(50)
@@ -14,50 +19,49 @@ model Usuario {
   senha      String   @db.VarChar(255)
   criado_em  DateTime @default(now())
 
-  jogador    Jogador?   // 1 usuário -> 1 jogador
+  // Relação 1:1 com Jogador
+  jogador    Jogador?
 }
 
+// Jogador do Clash Royale vinculado ao usuário
 model Jogador {
-  id_jogador  Int      @id @default(autoincrement())
-  clash_id    String   @unique @db.VarChar(18)   // Tag do Clash Royale (#XXXXX)
-  nome        String   @db.VarChar(50)
-  nivel       Int
-  trofeus     Int
-  pais        String?  @db.VarChar(10)           // Código do país (opcional)
+  id_jogador Int      @id @default(autoincrement())
+  clash_id   String   @unique @db.VarChar(18)     // Tag do jogador (#XXXXX)
+  nome       String   @db.VarChar(50)
+  nivel      Int
+  trofeus    Int
+  pais       String?  @db.VarChar(10)             // Código do país (opcional)
 
-  // Relacionamento 1:1 com Usuario
-  id_usuario  Int      @unique
-  usuario     Usuario  @relation(fields: [id_usuario], references: [id_usuario])
+  // Relação 1:1 com Usuario
+  id_usuario Int      @unique
+  usuario    Usuario  @relation(fields: [id_usuario], references: [id_usuario])
 
-  // Relacionamento com Cla
-  id_cla      Int?
-  cla         Cla?     @relation(fields: [id_cla], references: [id_cla])
-
+  // Relações com outras entidades
   decks       Deck[]
   estatistica Estatistica_Jogador?
   logs        Log_Acao[]
+
+  // Relações com partidas (jogador 1 e jogador 2)
   partidas1   Partida[] @relation("Jogador1")
   partidas2   Partida[] @relation("Jogador2")
+
+  // Relação com torneios
   torneios    Torneio_Jogador[]
 }
 
-model Cla {
-  id_cla    Int        @id @default(autoincrement())
-  nome      String     @db.VarChar(50)
-  descricao String     @db.VarChar(255)
-  nivel     Int
-  regiao    String     @db.VarChar(20)
-  jogadores Jogador[]
-}
-
+// Deck pertencente ao jogador
 model Deck {
-  id_deck    Int        @id @default(autoincrement())
-  nome       String     @db.VarChar(50)
+  id_deck    Int       @id @default(autoincrement())
+  nome       String    @db.VarChar(50)
+
   id_jogador Int
-  jogador    Jogador    @relation(fields: [id_jogador], references: [id_jogador])
+  jogador    Jogador   @relation(fields: [id_jogador], references: [id_jogador])
+
+  // Cartas pertencentes ao deck (relação N:N)
   cartas     Deck_Carta[]
 }
 
+// Carta existente no jogo
 model Carta {
   id_carta     Int          @id @default(autoincrement())
   nome         String       @db.VarChar(50)
@@ -65,15 +69,16 @@ model Carta {
   raridade     String       @db.VarChar(20)
   elixir       Int
   nivel_maximo Int
-  tipoCartaId  Int?
-  tipoCarta    Tipo_Carta?  @relation(fields: [tipoCartaId], references: [id_tipo])
+
+  // Relação N:N com Deck (via pivot Deck_Carta)
   decks        Deck_Carta[]
 }
 
+// Pivot N:N entre Deck e Carta
 model Deck_Carta {
   id_deck     Int
   id_carta    Int
-  nivel_carta Int
+  nivel_carta Int            // Nível da carta específica no deck
 
   deck  Deck  @relation(fields: [id_deck], references: [id_deck])
   carta Carta @relation(fields: [id_carta], references: [id_carta])
@@ -81,11 +86,15 @@ model Deck_Carta {
   @@id([id_deck, id_carta])
 }
 
+// Partidas registradas entre jogadores
 model Partida {
   id_partida  Int      @id @default(autoincrement())
   data_hora   DateTime @default(now())
   resultado   String   @db.VarChar(20)
-  duracao     Int
+
+  // Duração em segundos (mais adequado e leve que DateTime)
+  duracao     Int      
+
   id_jogador1 Int
   id_jogador2 Int
   id_arena    Int
@@ -95,23 +104,29 @@ model Partida {
   arena    Arena   @relation(fields: [id_arena], references: [id_arena])
 }
 
+// Arena do Clash Royale
 model Arena {
   id_arena           Int        @id @default(autoincrement())
   nome               String     @db.VarChar(50)
   nivel_minimo       Int
   trofeus_requeridos Int
+
+  // Partidas realizadas nessa arena
   partidas           Partida[]
 }
 
+// Torneios registrados
 model Torneio {
   id_torneio  Int               @id @default(autoincrement())
   nome        String            @db.VarChar(50)
   premiacao   String            @db.VarChar(100)
   data_inicio DateTime
   data_fim    DateTime
+
   jogadores   Torneio_Jogador[]
 }
 
+// Pivot entre Torneio e Jogador (participação)
 model Torneio_Jogador {
   id_torneio Int
   id_jogador Int
@@ -124,6 +139,7 @@ model Torneio_Jogador {
   @@id([id_torneio, id_jogador])
 }
 
+// Estatísticas agregadas do jogador
 model Estatistica_Jogador {
   id_estatistica Int     @id @default(autoincrement())
   id_jogador     Int     @unique
@@ -135,18 +151,13 @@ model Estatistica_Jogador {
   jogador Jogador @relation(fields: [id_jogador], references: [id_jogador])
 }
 
-model Tipo_Carta {
-  id_tipo   Int      @id @default(autoincrement())
-  nome_tipo String   @db.VarChar(30)
-  descricao String   @db.VarChar(255)
-  cartas    Carta[]
-}
-
+// Log de ações do jogador (histórico)
 model Log_Acao {
   id_log     Int      @id @default(autoincrement())
   id_jogador Int
-  acao       String   @db.VarChar(50)
+  acao       String   @db.VarChar(50)      // Tipo da ação
   data_hora  DateTime @default(now())
   detalhes   String   @db.VarChar(255)
+
   jogador    Jogador  @relation(fields: [id_jogador], references: [id_jogador])
 }
