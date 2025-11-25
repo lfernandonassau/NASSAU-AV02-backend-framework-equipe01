@@ -74,7 +74,7 @@ model Carta {
   decks        Deck_Carta[]
 }
 
-// Pivot N:N entre Deck e Carta
+// pivot N:N entre Deck e Carta
 model Deck_Carta {
   id_deck     Int
   id_carta    Int
@@ -104,7 +104,7 @@ model Partida {
   arena    Arena   @relation(fields: [id_arena], references: [id_arena])
 }
 
-// Arena do Clash Royale
+// Arenado Clash Royale
 model Arena {
   id_arena           Int        @id @default(autoincrement())
   nome               String     @db.VarChar(50)

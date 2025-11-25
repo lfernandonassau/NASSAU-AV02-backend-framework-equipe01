@@ -15,6 +15,43 @@ export const getAllUsuarios = async (req, res) => {
   }
 };
 
+export const getUsuarioById = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Dados (sem dados sensíveis)
+    const usuario = await prisma.usuario.findUnique({
+      where: { id_usuario: parseInt(id) },
+      select: {
+        id_usuario: true,
+        nome: true,
+        email: true,
+        criado_em: true,
+        jogador: {
+          select: {
+            id_jogador: true,
+            nome: true,
+            nivel: true,
+            trofeus: true,
+            pais: true,
+          },
+        },
+      },
+    });
+
+    if (!usuario) {
+      return res.status(404).json({ error: "Usuário não encontrado" });
+    }
+
+    res.json(usuario);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Erro ao buscar usuário" });
+  }
+};
+
+
+
 /* Cria um novo usuário */
 export const createUsuario = async (req, res) => {
   try {
