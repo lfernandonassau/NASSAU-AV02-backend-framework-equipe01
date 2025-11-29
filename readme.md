@@ -83,6 +83,8 @@ npm install
 4. Logo após use o comando `npx prisma migrate dev` do diretório `backend`
 
 5. Então use o comando `npm run dev` para iniciar a aplicação.
+
+6. Para entender mais sobre os endpoints e banco de dados da aplicação acesseo o [Arquivo de documentação do backend](https://github.com/lfernandonassau/NASSAU-AV02-backend-framework-equipe01/blob/main/backend/Backend-Documentation.md)
 ---
 ## Colaboradores do projeto
 
