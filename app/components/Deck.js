@@ -49,7 +49,7 @@ const Deck = ({ title }) => {
       </View>
       {deck.usage !== undefined && (
         <Text style={{ color: "white", marginTop: 8 }}>
-          🏆 {deck.usage * 100}% uso
+          🏆 {deck.usage}% uso
         </Text>
       )}
     </View>

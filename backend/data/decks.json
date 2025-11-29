@@ -1,64 +1,64 @@
 {
-    "date": "2025-11-28",
+    "date": "2025-11-29",
     "data": {
-        "deck_id": "deck_28000015-26000040-28000000-26000000-26000005-27000002-26000056-26000010_container",
-        "data_name": "barbarian-barrel,dart-goblin,fireball,knight,minions,mortar-ev1,skeleton-barrel-ev1,skeletons",
-        "name_desktop": "EvoMortar 2.9 Cycle",
-        "name_mobile": "EvoMortar 2.9 Cycle",
+        "deck_id": "deck_26000015-26000068-27000007-26000009-26000018-26000011-28000026-26000052_container",
+        "data_name": "baby-dragon-ev1,battle-healer,elixir-collector,golem,mini-pekka,valkyrie-ev1,vines,zappies",
+        "name_desktop": "Golem Evo BBD EvoValk Vines",
+        "name_mobile": "Golem Evo BBD EvoValk Vines",
         "cards": [
             {
-                "alt": "Skeleton Barrel",
-                "card_key": "skeleton-barrel-ev1",
-                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/skeleton-barrel-ev1.png"
+                "alt": "Baby Dragon",
+                "card_key": "baby-dragon-ev1",
+                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/baby-dragon-ev1.png"
             },
             {
-                "alt": "Mortar",
-                "card_key": "mortar-ev1",
-                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/mortar-ev1.png"
+                "alt": "Valkyrie",
+                "card_key": "valkyrie-ev1",
+                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/valkyrie-ev1.png"
             },
             {
-                "alt": "Knight",
-                "card_key": "knight",
-                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/knight.png"
+                "alt": "Golem",
+                "card_key": "golem",
+                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/golem.png"
             },
             {
-                "alt": "Fireball",
-                "card_key": "fireball",
-                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/fireball.png"
+                "alt": "Mini P.E.K.K.A",
+                "card_key": "mini-pekka",
+                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/mini-pekka.png"
             },
             {
-                "alt": "Dart Goblin",
-                "card_key": "dart-goblin",
-                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/dart-goblin.png"
+                "alt": "Battle Healer",
+                "card_key": "battle-healer",
+                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/battle-healer.png"
             },
             {
-                "alt": "Minions",
-                "card_key": "minions",
-                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/minions.png"
+                "alt": "Vines",
+                "card_key": "vines",
+                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/vines.png"
             },
             {
-                "alt": "Skeletons",
-                "card_key": "skeletons",
-                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/skeletons.png"
+                "alt": "Zappies",
+                "card_key": "zappies",
+                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/zappies.png"
             },
             {
-                "alt": "Barbarian Barrel",
-                "card_key": "barbarian-barrel",
-                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/barbarian-barrel.png"
+                "alt": "Elixir Collector",
+                "card_key": "elixir-collector",
+                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/elixir-collector.png"
             }
         ],
-        "copy_link": "https://link.clashroyale.com/en?clashroyale://copyDeck?deck=26000056;27000002;26000000;28000000;26000040;26000005;26000010;28000015&tt=159000000&l=Royals",
-        "qr_code": "clashroyale://copyDeck?deck=26000056;27000002;26000000;28000000;26000040;26000005;26000010;28000015&tt=159000000&l=Royals",
+        "copy_link": "https://link.clashroyale.com/en?clashroyale://copyDeck?deck=26000015;26000011;26000009;26000018;26000068;28000026;26000052;27000007&tt=159000000&l=Royals",
+        "qr_code": "clashroyale://copyDeck?deck=26000015;26000011;26000009;26000018;26000068;28000026;26000052;27000007&tt=159000000&l=Royals",
         "desktop_table": {
-            "rating": "64",
-            "usage_percent": "0.5%",
-            "wins_percent": "56.8%",
-            "draw_percent": "0.2%",
-            "loss_percent": "43.0%",
-            "usage_absolute": "10,317",
-            "wins_absolute": "5,858",
-            "draw_absolute": "24",
-            "loss_absolute": "4,435"
+            "rating": "62",
+            "usage_percent": "0.6%",
+            "wins_percent": "56.0%",
+            "draw_percent": "0.1%",
+            "loss_percent": "43.9%",
+            "usage_absolute": "14,884",
+            "wins_absolute": "8,332",
+            "draw_absolute": "13",
+            "loss_absolute": "6,539"
         }
     }
 }
